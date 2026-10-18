@@ -4,7 +4,7 @@
   <author>Yushiren</author>
   <packageId>Yushiren.XenotypesTrader</packageId>
   <description><![CDATA[Xenotypes Trader向原版游戏增加了一种新的轨道贸易飞船类型：
-<color=#77a5ac>异种贸易船，读取游戏中所有异种类型并随机选择60%出售，每次出售15个，Mod设置里可设置异种列表白名单（默认全开）XML中可配置参数。</color>
+<color=#77a5ac>异种贸易船，读取游戏中所有异种类型并随机选择60%出售，每种异种出售1个，每次最多出售15个，Mod设置里可设置异种列表白名单（默认全开）XML中可配置参数。</color>
 ▸推荐排序：
 ↳Core
 ↳Biotech
@@ -13,7 +13,7 @@
 ↳Trader Show Xenotype
 ▸语言：简体中文
 英语
-▸反馈：
+▸反馈：https://github.com/Rickynewts/Xenotypes-Trader
 ]]></description>
 <!--前置-->
 <modDependencies>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Verse;
+using static XenotypesTrader.XenotypeFilterUtil;
 
 namespace XenotypesTrader
 {
@@ -98,18 +99,8 @@ namespace XenotypesTrader
 
         private static IEnumerable<XenotypeDef> FilteredXenotypes(string search)
         {
-            IEnumerable<XenotypeDef> query = DefDatabase<XenotypeDef>.AllDefsListForReading
-                .Where(x => x != null);
-
-            if (!search.NullOrEmpty())
-            {
-                string s = search.ToLowerInvariant();
-                query = query.Where(x =>
-                    (x.LabelCap.ToString() ?? "").ToLowerInvariant().Contains(s) ||
-                    (x.defName ?? "").ToLowerInvariant().Contains(s));
-            }
-
-            return query.OrderBy(x => x.LabelCap.ToString());
+            bool excludeHAR = Settings?.excludeHARXenotypes ?? true;
+            return XenotypeFilterUtil.FilterForSettings(search, excludeHAR);
         }
 
         private static void DrawXenotypeRow(Listing_Standard listing, XenotypeDef def)

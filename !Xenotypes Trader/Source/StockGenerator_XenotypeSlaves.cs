@@ -9,11 +9,7 @@ using Verse;
 namespace XenotypesTrader
 {
     /// <summary>
-    /// 自定义的贸易库存生成器。
-    /// 作用：每当一艘携带此生成器的贸易船刷新库存时，
-    /// 从当前游戏中所有已加载的 XenotypeDef（包括原版和所有 mod 添加的异种人）里，
-    /// 随机挑选出一定比例（默认 60%），
-    /// 为每个被选中的异种人生成若干名奴隶，作为商品出售。
+    /// 库存生成。
     /// </summary>
     public sealed class StockGenerator_XenotypeSlaves : StockGenerator
     {
@@ -25,14 +21,15 @@ namespace XenotypesTrader
 
         public bool excludeBaseliner = true;
 
+        private const string HARPackageId = "erdelf.HumanoidAlienRaces";
+
+        // 过滤HAR种族
         public override IEnumerable<Thing> GenerateThings(PlanetTile forTile, Faction faction = null)
         {
             XenotypesTraderSettings settings = XenotypesTraderMod.Settings;
 
-            // 1. 拉取所有 XenotypeDef，并按 mod 设置过滤掉被玩家禁用的。
-            List<XenotypeDef> pool = DefDatabase<XenotypeDef>.AllDefsListForReading
-                .Where(x => x != null && (settings == null || settings.IsEnabled(x.defName)))
-                .ToList();
+            //拉取XenotypeDef
+            List<XenotypeDef> pool = XenotypeFilterUtil.BuildTraderPool(settings);
             Log.Message($"[XenotypesTrader] 开始生成异种：可用异种人池 = {pool.Count}");
 
             if (excludeBaseliner)
@@ -50,12 +47,10 @@ namespace XenotypesTrader
             pool.Shuffle();
 
             int targetCount = Mathf.RoundToInt(pool.Count * Mathf.Clamp01(selectionChance));
-            if (targetCount < 1)
-            {
-                targetCount = 1;
-            }
+            if (targetCount < 1) targetCount = 1;
 
-            Log.Message($"[XenotypesTrader] selectionChance = {selectionChance}, 目标异种人数 = {targetCount}, maxSlaves = {maxSlaves}");
+            Log.Message($"[XenotypesTrader] selectionChance = {selectionChance}, " +
+                        $"目标异种人数 = {targetCount}, maxSlaves = {maxSlaves}");
 
             int emitted = 0;
 
@@ -161,6 +156,7 @@ namespace XenotypesTrader
                 }
             }
         }
+
 
         public override bool HandlesThingDef(ThingDef thingDef)
         {
