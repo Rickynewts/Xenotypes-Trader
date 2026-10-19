@@ -22,7 +22,7 @@ namespace XenotypesTrader
 
         public override string SettingsCategory()
         {
-            return "Xenotypes Trader";
+            return "XenotypesTrader_SettingsCategory".Translate();
         }
 
         public override void DoSettingsWindowContents(Rect inRect)
@@ -39,7 +39,7 @@ namespace XenotypesTrader
             Listing_Standard listing = new Listing_Standard();
             listing.Begin(new Rect(0f, 0f, viewWidth - 8f, 99999f));
 
-            listing.Label("勾选的异种人会出现在奴隶商船里；取消勾选后该异种人不再被出售。");
+            listing.Label("勾选的异种人会出现在商船里；取消勾选后该异种人不再被出售。");
             listing.Gap(4f);
 
             // 搜索框
