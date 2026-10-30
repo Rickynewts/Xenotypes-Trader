@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LanguageData>
-  <XenotypesTrader_SettingsCategory>异种贸易商</XenotypesTrader_SettingsCategory>
-  <XenotypesTrader_Description>勾选的异种人会出现在奴隶商船里；取消勾选后该异种人不再被出售。</XenotypesTrader_Description>
-  <XenotypesTrader_EnableAll>全部启用</XenotypesTrader_EnableAll>
-  <XenotypesTrader_DisableAll>全部禁用</XenotypesTrader_DisableAll>
-  <XenotypesTrader_NoMatches>(没有匹配的异种人)</XenotypesTrader_NoMatches>
-</LanguageData>
