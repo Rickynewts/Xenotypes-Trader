@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TraderKindDef>
+    <defName>Orbital_XenotypeSlaver</defName>
+    
+    <!--商船名-->
+    <label>异种奴隶贩子</label>
+
+    <orbital>true</orbital><!-- 进入随机到访的轨道商池 -->
+    <commonality>0.4</commonality><!-- 相对权重 -->
+
+    <!--交易者类型定义-->
+    <stockGenerators>
+    <!--自定义C#类-->
+      <li Class="XenotypesTrader.StockGenerator_XenotypeSlaves">
+        <selectionChance>0.6</selectionChance><!--被选中的异种人比例（0~1）-->
+        <slavesPerXenotype>1</slavesPerXenotype><!--每个被选中的异种人生成多少个奴隶。-->
+        <maxSlaves>15</maxSlaves><!--奴隶总数硬上限-->
+        <excludeBaseliner>true</excludeBaseliner><!--是否跳过Baseliner，默认开-->
+      </li>
+    </stockGenerators>
+  </TraderKindDef>
+</Defs>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <XenotypesTrader_SettingsCategory>Xenotypes Trader</XenotypesTrader_SettingsCategory>
+  <XenotypesTrader_Description>Tick a xenotype to include it in slaver trader stock; untick to exclude it.</XenotypesTrader_Description>
+  <XenotypesTrader_EnableAll>Enable all</XenotypesTrader_EnableAll>
+  <XenotypesTrader_DisableAll>Disable all</XenotypesTrader_DisableAll>
+  <XenotypesTrader_NoMatches>(No matching xenotypes)</XenotypesTrader_NoMatches>
+</LanguageData>
